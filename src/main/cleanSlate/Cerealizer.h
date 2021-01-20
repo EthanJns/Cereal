@@ -48,7 +48,7 @@ public:
 };
 
 template<class T>
-void CSchematic<T>::loadScheme(string path){}
+void CSchematic<T>::loadScheme(string path){cout<<"Loading Scheme\n";}
 
 //Serilizer Goes Here
 template<class T>
@@ -101,6 +101,7 @@ class Cerealizer{
         CSchematic<T>* scheme;
 
     public:
+        void testIng();
         Cerealizer(string pathToFile);
         ~Cerealizer();
 
@@ -111,6 +112,7 @@ template<class T>
 Cerealizer<T>::Cerealizer(string pathToFile){
 
     //Instanciate in memory the CSchematic | Serializer | Deserializer
+    cout<<"Allocating Memory"<<endl;
     this->serializer = malloc(sizeof(Serializer<T>));
     this->deserializer = malloc(sizeof(Deserializer<T>));
     this->schematic = malloc(sizeof(CSchematic<T>));
@@ -132,6 +134,11 @@ Cerealizer<T>::Cerealizer(string pathToFile){
      free(this->serial);
      free(this->deserial);
      free(this->scheme);
+ }
+
+ template<class T>
+ void Cerealizer<T>::testIng(){
+     cout<<"Does this work?\n";
  }
 
 #endif
